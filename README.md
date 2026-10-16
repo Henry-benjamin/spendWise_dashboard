@@ -1,26 +1,25 @@
-# SpendWise Dashboard - JavaScript Foundation
+# SpendWise Dashboard - Interactive Application
 
-SpendWise is a personal finance dashboard application designed to help users manage, track, and optimize their monthly budgets. In Week 6, SpendWise was updated with JavaScript functionality to collect financial input from users, calculate key budget metrics, and output the financial breakdown.
+SpendWise is a personal finance dashboard application designed to help users track expenses, monitor budgets, and evaluate financial health in real time. This version introduces core interactive JavaScript features, transforming the static UI into a fully responsive, dynamic application.
 
-## Features & JavaScript Implementation
+## Key Features & JavaScript Implementation
 
-This release adds core JavaScript concepts to power the application logic:
+This release satisfies all interactive application requirements through modern vanilla JavaScript:
 
-1. **Variables & Application Data:**
-   - Uses `let` and `const` variables to track core financial data including `totalIncome`, `totalExpenses`, `savingsGoal`, and `remainingBalance`.
-   - Ensures data integrity by casting string inputs to numeric types (`Number` / `parseFloat`).
+1. **Event Listeners & User Interactions:**
+   - Listens for form submission events on the user interface (`expense-form`) to capture expense names and amounts dynamically.
+   - Prevents default form submission behavior (`event.preventDefault()`) to keep the application running smoothly in a single-page view.
 
-2. **User Input Collection:**
-   - Prompts users on page load using browser `prompt()` dialogs to enter their income, expenses, and savings target.
+2. **Data Management with Arrays:**
+   - Utilizes `expensesArray` to store multiple expense records as JavaScript objects, containing unique IDs, names, and numeric amounts.
 
-3. **Budget Calculations:**
-   - Performs arithmetic calculations to derive the remaining balance (`Income - Expenses`).
-   - Calculates percentage ratios for spending and savings relative to total income.
+3. **Data Processing with Loops:**
+   - Employs a standard `for` loop to iterate through the `expensesArray`, accumulating total expenses and rendering individual transaction items on the webpage efficiently.
 
-4. **Reusable Functions:**
-   - `calculateRemainingBalance(income, expenses)`: Encapsulates remaining budget arithmetic.
-   - `calculatePercentage(amount, income)`: Computes percentage allocations.
-   - `displayConsoleSummary(...)`: Formats and logs clean, readable output to the browser console with budget status alerts.
+4. **Dynamic DOM Manipulation:**
+   - Dynamically creates HTML elements (`document.createElement`) to display new expense entries in real time.
+   - Updates metric cards (Income, Expenses, Remaining Balance, and Status) instantly whenever a new transaction is added.
 
-5. **Console Output:**
-   - Displays all outputs clearly labeled in the Developer Tools Console (`F12`).
+5. **Conditional Decision Making:**
+   - Evaluates the user's remaining balance using conditional statements (`if`, `else if`, `else`) to categorize the budget into distinct states: _Healthy Savings_, _Low Balance Warning_, or _Deficit (Over Budget!)_.
+   - Dynamically changes the visual color and status label to provide immediate feedback to the user.

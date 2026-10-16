@@ -1,4 +1,3 @@
-/* CSS Custom Properties on :root */
 :root {
   --brand-color: #4f46e5;
   --accent-color: #10b981;
@@ -8,9 +7,9 @@
   --text-secondary: #6b7280;
   --card-bg: #ffffff;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --danger-color: #ef4444;
 }
 
-/* Optional Dark Theme Stretch Goal */
 @media (prefers-color-scheme: dark) {
   :root {
     --surface-color: #1f2937;
@@ -37,14 +36,12 @@ body {
   color: var(--text-primary);
 }
 
-/* CSS Grid for Overall Layout */
 .dashboard-container {
   display: grid;
   grid-template-columns: 260px 1fr;
   min-height: 100vh;
 }
 
-/* Sidebar (Flexbox) */
 .sidebar {
   background-color: var(--surface-color);
   border-right: 1px solid var(--text-secondary);
@@ -72,13 +69,11 @@ body {
   color: var(--brand-color);
 }
 
-/* Main Content Area */
 .main-content {
   display: flex;
   flex-direction: column;
 }
 
-/* Header (Flexbox) */
 .header {
   background-color: var(--surface-color);
   padding: 1.5rem 2rem;
@@ -88,15 +83,13 @@ body {
   border-bottom: 1px solid var(--bg-color);
 }
 
-/* Cards Grid Layout */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem 2rem;
 }
 
-/* Individual Card (Flexbox & Micro-interactions) */
 .card {
   background-color: var(--card-bg);
   padding: 1.5rem;
@@ -105,11 +98,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
-  /* Requirement: Transition under 250ms using transform / box-shadow */
-  transition:
-    transform 200ms ease,
-    box-shadow 200ms ease;
 }
 
 .card h3 {
@@ -123,21 +111,95 @@ body {
   color: var(--brand-color);
 }
 
-/* Hover and Focus States */
-.card:hover,
-.card:focus {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  outline: none;
+/* Interaction Section Layout */
+.interaction-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
-/* Responsive Design: Collapse to single column below 768px */
+.form-card,
+.transactions-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.form-card h3,
+.transactions-card h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.form-group input {
+  padding: 0.6rem;
+  border: 1px solid var(--text-secondary);
+  border-radius: 4px;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+}
+
+.btn-primary {
+  background-color: var(--brand-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+#expense-list {
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#expense-list li {
+  padding: 0.5rem;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .dashboard-container {
     grid-template-columns: 1fr;
   }
-
+  .interaction-section {
+    grid-template-columns: 1fr;
+  }
   .sidebar {
-    display: none; /* Can be adjusted or converted to a mobile menu if desired */
+    display: none;
   }
 }
