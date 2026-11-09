@@ -5,7 +5,7 @@
 
 // Application State Data
 let totalIncome = 3000.00; // Default base income
-let expensesArray = [];    // 2. WORK WITH MULTIPLE RECORDS (Arrays)
+   // 2. WORK WITH MULTIPLE RECORDS (Arrays)
 
 const savedExpenses = localStorage.getItem("spendwise_expenses");
 let expensesArray = savedExpenses ? JSON.parse(savedExpenses) : [];
