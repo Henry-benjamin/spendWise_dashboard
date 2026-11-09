@@ -27,6 +27,12 @@
   padding: 0;
 }
 
+#netlify-badge,
+.netlify-badge,
+[data-netlify-badge] {
+    display: none !important;
+}
+
 body {
   font-family:
     system-ui,
