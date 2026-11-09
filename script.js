@@ -5,8 +5,8 @@
 
 // Application State Data
 let totalIncome = 3000.00; // Default base income
-   // 2. WORK WITH MULTIPLE RECORDS (Arrays)
 
+// Load saved expenses from localStorage
 const savedExpenses = localStorage.getItem("spendwise_expenses");
 let expensesArray = savedExpenses ? JSON.parse(savedExpenses) : [];
 
@@ -20,6 +20,9 @@ const displayIncomeEl = document.getElementById("display-income");
 const displayExpensesEl = document.getElementById("display-expenses");
 const displayBalanceEl = document.getElementById("display-balance");
 const displayStatusEl = document.getElementById("display-status");
+
+// Render any saved items immediately when the page opens
+updateDashboard();
 
 // 5. HANDLE USER INTERACTIONS (Event Listener on Form Submit)
 expenseForm.addEventListener("submit", function(event) {
@@ -38,6 +41,9 @@ expenseForm.addEventListener("submit", function(event) {
         };
 
         expensesArray.push(newExpense);
+
+        // ---> CRITICAL ADDITION: Save the updated array to localStorage <---
+        localStorage.setItem("spendwise_expenses", JSON.stringify(expensesArray));
 
         // Reset form fields
         expenseNameInput.value = "";
